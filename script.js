@@ -1,14 +1,22 @@
+import {
+  DOTS_SIZE,
+  DOTS_SPACE,
+  DOT_OUTLINE_WIDTH,
+  DOT_SHAPE,
+  FLOWER_TYPE,
+} from "./profile.js";
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 ctx.globalCompositeOperation = "destination-over";
 let number = 0;
-let scale = 5; //space between dots
-let size = 3; //dots size
-let flowerType = 7; //change the type of flower by modifying the value
+let scale = DOTS_SPACE;
+let size = DOTS_SIZE;
+let flowerType = FLOWER_TYPE;
 
-let dotShape = 1; //dots shape
+let dotShape = DOT_SHAPE;
 let hue = Math.random() * 360; //for random color
 function draw() {
   let angle = number * flowerType;
@@ -17,7 +25,7 @@ function draw() {
   let positionY = radius * Math.cos(angle) + canvas.height / 2;
   ctx.fillStyle = `hsl(${hue},100%,50%)`;
   ctx.strokeStyle = `white`;
-  ctx.lineWidth = 3;
+  ctx.lineWidth = DOT_OUTLINE_WIDTH;
   ctx.beginPath();
 
   ctx.arc(positionX, positionY, size, dotShape, Math.PI * 2);
